@@ -1,0 +1,147 @@
+#wanted to make a function that could break down english words into phonetic sounds.
+#it would be like 95% accurate
+#i could make some terminal thing to correct any exceptions
+#also wanted to make a thing that could make stuff rhyme
+#or at least have a dictionary of words and their phonetic counterparts
+
+b = 1
+d = 2
+f = 3
+g = 4
+h = 5
+j = 6
+k = 7
+l = 8
+m = 9
+n = 10
+p = 11
+s = 12
+t = 13
+v = 14
+w = 15
+x = 16
+y = 17
+z = 18
+ch = 19
+sh = 20
+th = 21
+r = 22
+
+#vowels
+eh = 32
+ee = 33
+ah = 34
+uh = 35
+oo = 36
+er = 37
+ih = 38
+oh = 39
+aw = 40
+ahw == 41
+def isVowel(letter):
+    if letter in ("a", "e", "i", "o", "u"):
+        return True
+    return False
+def phoneticizeLetter(word, iter):
+    letter = word[iter]
+    after = word[iter + 1]
+    position = iter
+    inversePos = len(word) - iter
+    hasH = after == "h"
+    hasR = after == "r"
+   # hasE = ((not isVowel(after)) and word[iter+2] == "e") or ((not isVowel(after) and not isVowel(word[iter+2])) and word[+3] == "e")
+    isVowel = letter in ('a", "e", "i", "o", "u"')
+    doubleVowel =  isVowel and letter == after
+       
+	
+	if letter == "a": 
+		return ah 
+	
+	elif letter == "b": 
+		return b 
+	
+	elif letter == "c": 
+		return s  
+	
+	elif letter == "d": 
+		return d 
+	
+	elif letter == "e": 
+		return eh 
+	
+	elif letter == "f": 
+		return f 
+	
+	elif letter == "g": 
+		return g 
+	
+	elif letter == "h": 
+		return h 
+	
+	elif letter == "i": 
+		return ih 
+	
+	elif letter == "j": 
+		return j 
+	
+	elif letter == "k": 
+		return k 
+	
+	elif letter == "l": 
+		return l 
+	
+	elif letter == "m": 	
+		return m 
+	
+	elif letter == "n": 
+		return n 
+	
+	elif letter == "o": 
+		return ahw
+	
+	elif letter == "p": 
+		return p 
+	
+	elif letter == "q": 
+		return k  
+	
+	elif letter == "r": 
+		return r
+	
+	elif letter == "s": 
+		return s 
+	
+	elif letter == "t": 
+		return t 
+	
+	elif letter == "u": 
+		return uh 
+	
+	elif letter == "v": 
+		return v 
+	
+	elif letter == "w": 
+		return w 
+	
+	elif letter == "x": 
+		return x 
+	
+	elif letter == "y": 
+		return y 
+	
+	elif letter == "z": 	
+		return z
+
+def phoneticizeWord(word: str):
+    i = 0
+    phonetics = []
+    while i < len(word):
+        chunk, skip = phoneticizeLetter(word, i)
+        phonetics += chunk
+        i += skip
+    return phonetics
+    
+   
+   
+   
+print(phoneticizeWord("penis"))
