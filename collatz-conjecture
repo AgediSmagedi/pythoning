@@ -1,0 +1,37 @@
+#wanna see how many numbers i can compute the collatz conjecture for
+
+#used a lookup dictionary to hopefully speed things up for higher numbers
+    
+def collatzStep(num):
+    
+    if 1 == (num & 1):
+        #if the last bit is 1, so its odd
+        return 3 * num + 1
+    else:
+        return num >> 1
+    
+
+knownNumbersDict = {}
+
+def calculateCollatzDepth(startingNumber):
+    currentNumber = startingNumber
+    depth = 0
+    pastnumbers = []
+    while currentNumber != 1:
+        pastnumbers.append(currentNumber)
+        if currentNumber in knownNumbersDict:
+            depth += knownNumbersDict[currentNumber]
+            break
+        currentNumber = collatzStep(currentNumber)
+        depth += 1
+
+    for i in range(len(pastnumbers)):
+        knownNumbersDict[pastnumbers[i]] = depth - i
+
+    return depth
+
+
+searchdepth = 20
+for i in range(2, searchdepth):
+    calculateCollatzDepth(i)
+#starting at 0 breaks it, starting at 1 is redundant
